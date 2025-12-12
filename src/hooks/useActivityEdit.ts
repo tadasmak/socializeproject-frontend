@@ -7,6 +7,34 @@ import { UserType } from '../types/userTypes';
 import { ActivityFormType } from '../types/activityTypes';
 import { useGenerateDescription } from './useGenerateDescription';
 
+const activityFormKeys: (keyof ActivityFormType)[] = [
+    "title",
+    "description",
+    "location",
+    "start_time",
+    "max_participants",
+    "minimum_age",
+    "maximum_age",
+    "activity_type_name"
+];
+
+function pickActivityFormFields(data: unknown): ActivityFormType {
+    const src = (data ?? {}) as Record<string, unknown>;
+    const result = {} as Record<string, unknown>;
+
+    for (const key of activityFormKeys) {
+        const raw = src[key as string];
+
+        const value = key === "start_time" && raw != null
+            ? new Date(String(raw))
+            : raw;
+
+        result[key] = value;
+    }
+
+    return result as unknown as ActivityFormType;
+}
+
 export function useActivityEdit(defaultActivity: ActivityFormType, user: UserType | null) {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -21,12 +49,7 @@ export function useActivityEdit(defaultActivity: ActivityFormType, user: UserTyp
                 if (response.status === 404) return null;
                 return response.json();
             })
-            .then(data => {
-                setActivity({
-                    ...data,
-                    start_time: new Date(data.start_time)
-                })
-            })
+            .then(data => setActivity(pickActivityFormFields(data)))
             .finally(() => setLoadingFetch(false));
     }, [id]);
 
@@ -48,7 +71,7 @@ export function useActivityEdit(defaultActivity: ActivityFormType, user: UserTyp
             const response = await apiFetch(`/activities/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(activity),
+                body: JSON.stringify({ activity: activity }),
             });
 
             if (!response.ok) {
