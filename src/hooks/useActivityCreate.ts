@@ -17,7 +17,8 @@ export function useActivityCreate(user: UserType | null) {
         ),
         max_participants: 5,
         minimum_age: 18,
-        maximum_age: 26
+        maximum_age: 26,
+        activity_type_name: 'Other'
     });
     const [loading, setLoading] = useState(false);
     const { generatingDescription, generateDescription } = useGenerateDescription(setForm);
