@@ -53,15 +53,15 @@ export default function Navigation() {
                     <div className="flex justify-between w-full h-full">
                         {!showSearch && (
                             <div>
-                                <Link to="/" className="flex items-center h-full">
-                                    <div className="flex flex-1 justify-center items-stretch mr-6">
+                                <div className="flex items-center h-full">
+                                    <Link to="/" className="flex flex-1 justify-center items-stretch mr-6">
                                         <img alt="Social Eyes" src={logoImage} className="h-10 w-auto" />
                                         <div className="text-xl/10 font-bold ml-2 hidden md:block">Social Eyes</div>
-                                    </div>
+                                    </Link>
                                     {navigationItems.map((item) => (
-                                        <div key={item.name} className={`flex h-full items-center px-2 md:px-4 text-md text-white font-medium ${item.current ? 'border-b-3 border-solid border-coral' : 'hover:bg-slate-700'}`}>{item.name}</div>
+                                        <Link to={item.href} key={item.name} className={`flex h-full items-center px-2 md:px-4 text-md text-white font-medium ${item.current ? 'border-b-3 border-solid border-coral' : 'hover:bg-slate-700'}`}>{item.name}</Link>
                                     ))}
-                                </Link>
+                                </div>
                             </div>
                         )}
 

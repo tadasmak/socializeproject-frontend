@@ -13,7 +13,8 @@ const defaultActivity: ActivityFormType = {
     start_time: new Date(),
     max_participants: 4,
     minimum_age: 18,
-    maximum_age: 26
+    maximum_age: 26,
+    activity_type_name: 'Other'
 }
 
 const ActivityEdit = () => {
