@@ -51,10 +51,10 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
                     <CakeIcon className="sm:hidden inline-block text-coral-light" height={18} />
                     {minimum_age} - {maximum_age}
                 </div>
-                <div className="flex items-center gap-1 truncate">
+                <div className="flex items-center gap-1">
                     <span className="text-coral-light hidden sm:inline">Start time:</span>
                     <Calendar1Icon className="sm:hidden inline-block text-coral-light" height={18} />
-                    {new Date(start_time).toLocaleString()}
+                    <span className="truncate">{new Date(start_time).toLocaleString()}</span>
                 </div>
             </div>
         </Link>
