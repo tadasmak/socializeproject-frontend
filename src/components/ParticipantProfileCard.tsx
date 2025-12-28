@@ -20,8 +20,8 @@ export default function ParticipantProfileCard({ profile }: Props) {
         <div className="bg-[#292929] ring-1 ring-black ring-opacity-5 rounded-xl p-6 shadow-lg">
             <div className="flex items-center space-x-4 mb-6">
                 <img src={profilePlaceholderIcon} className="w-16 h-16 rounded-full" />
-                <div>
-                    <h1 className="text-3xl font-semibold">@{profile.username}</h1>
+                <div className="overflow-hidden">
+                    <h1 className="text-2xl truncate md:text-3xl font-semibold">@{profile.username}</h1>
                     <p className="text-gray-400">🎂 Age: {profile.age ? <span className="text-gray-300 font-semibold">{profile.age}</span> : <span>not given</span>}</p>
                 </div>
             </div>
