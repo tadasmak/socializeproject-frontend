@@ -87,7 +87,7 @@ const EditProfile = () => {
   if (!profile) return <p>No profile data available.</p>;
 
   return (
-    <div className="max-w-xl w-full mx-auto p-6 text-white">
+    <div className="max-w-xl w-full mx-auto px-2 md:px-6 text-white">
       <h1 className="text-3xl font-bold mb-6">Edit Profile</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
