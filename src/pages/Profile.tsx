@@ -29,7 +29,7 @@ const Profile = () => {
 
     return (
         // TODO: merge Profile and Participant into one component
-        <div className="max-w-xl w-full mx-auto px-2 md:px-6 text-white">
+        <div className="max-w-xl w-full mx-auto text-white">
             <div className="flex justify-between mb-4">
                 <a className="text-sm text-coral-light cursor-pointer hover:underline" onClick={() => navigate(-1)}>← Back to Activity</a>
                 <Link to="/participants/me/edit" className="text-sm text-gray-300 mr-2 cursor-pointer hover:text-white hover:underline">✏️ Edit</Link>
